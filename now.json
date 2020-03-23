@@ -1,0 +1,32 @@
+{
+  "name": "coronamap",
+  "version": 2,
+  "alias": [
+    "coronamap.com.br",
+    "coronamap.now.sh"
+  ],
+  "builds": [{
+  "src": "package.json",
+    "use": "@now/static-build"
+  }],
+  "routes": [
+    {
+      "src": "^/_nuxt/(.*)",
+      "dest": "/_nuxt/$1"
+    },
+    {
+      "src": "^/([a-zA-Z0-9-])+.(png|jpg|ico)$",
+      "dest": "$1"
+    },
+    {
+      "src": ".*",
+      "dest": "/200.html"
+    }
+  ],
+  "scope": "theus",
+  "build": {
+    "env": {
+      "X_API_KEY": "@coronamap_x_api_key"
+    }
+  }
+}
